@@ -38,8 +38,8 @@ info = {
     'CFBundleName': 'OU VPN',
     'CFBundleDisplayName': 'OU VPN',
     'CFBundlePackageType': 'APPL',
-    'CFBundleShortVersionString': '2.1',
-    'CFBundleVersion': '3',
+    'CFBundleShortVersionString': '2.2',
+    'CFBundleVersion': '4',
     'CFBundleIconFile': 'AppIcon',
     'LSMinimumSystemVersion': '13.0',
     'LSUIElement': True,
@@ -51,7 +51,7 @@ with (app / 'Contents' / 'Info.plist').open('wb') as file:
 (app / 'Contents' / 'PkgInfo').write_bytes(b'APPL????')
 subprocess.run(['codesign', '--force', '--sign', '-', str(app)], check=True)
 subprocess.run(['codesign', '--verify', '--deep', '--strict', str(app)], check=True)
-archive = DIST / 'GlobalProtect-Toggle-macOS.zip'
+archive = DIST / 'GlobalProtect-Toggle-macOS-v2.2.0.zip'
 if archive.exists():
     archive.unlink()
 subprocess.run(['ditto', '-c', '-k', '--sequesterRsrc', '--keepParent', str(app), str(archive)], check=True)
